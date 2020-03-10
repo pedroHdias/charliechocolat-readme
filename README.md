@@ -22,6 +22,8 @@ Repository for backend/frontend and services for CharlieChocolat Website (onGoin
   - `mongoose`: connects to MongoDB database;
   - `mongoose-unique-validator`: adds pre-save validation for unique fields within a Mongoose schema;
   - `morgan`: HTTP request logger middleware;
+  - `multer`: Group of middlewares to handle file data;
+  - `uuid`: Generate ids;
 
 - devDependencies:
 
@@ -32,23 +34,28 @@ Repository for backend/frontend and services for CharlieChocolat Website (onGoin
   - `nodemon`: automatically restarts node application when file changes in the directory are detected;
   - `webpack`: bundles production files;
   - `webpack-node-externals`: avoid error when working with Express;
-  
+
   - File Structure:
     ```bash
     ├── controllers               # Reducers for routes
     │   ├── shared                # Functions shared in reducers
-    │       ├──  ...            
-    │   ├── ...               
-    ├── middleware                # Auth middleware called in each request
-    │   ├── ...               
+    │       ├──  ...
+    │   ├── ...
+    ├── middleware                # middleware called in each request which is used
+    │   ├── ...
     ├── models                    # Database Schema files
     │   ├── helpers               # Helper classes (ex- HttpError extends Error)
-    │       ├──  ...            
-    │   ├── ...               
+    │       ├──  ...
+    │   ├── ...
     ├── routes                    # Express Route definition
-    │   ├── ...               
-    ├── tests                     # Automated tests (alternatively `spec` or `tests`
-    │   ├── ...               
+    │   ├── ...
+    ├── tests                     # Automated tests (alternatively `spec` or `tests`)
+    │   ├── ...
+    ├── uploads                   # Files served to the frontend
+    │   ├── images
+    │       ├── ...
+    ├── utils                     # Helper functions
+    │   ├── ...
     ├── .babelrc                  # Config file for babel
     ├── .env                      # Global environment variables
     ├── apidoc.json               # Config for apidoc documentation package
@@ -57,12 +64,14 @@ Repository for backend/frontend and services for CharlieChocolat Website (onGoin
     ├── webpack.config.js         # Config file for webpack (dev)
     └── webpack.config.prod.js    # Config file for webpack (prod)
     ```
+
 ### Frontend
 
-- NodeJS + React + Webpack;
+- React;
 
 - dependencies:
 
+  - `@fortawesome`: icon library;
   - `axios`: connects react app to API;
   - `react-bootstrap`: import certain html components;
   - `core-js`: compiles javascript to adapt to brwosers;
@@ -72,10 +81,11 @@ Repository for backend/frontend and services for CharlieChocolat Website (onGoin
   - `react-dom`: virtual DOM for React;
   - `react-redux`: Redux store (app global state management), dispatch actions to the store to update data;
   - `react-router-dom`: react app routing;
+  - `react-transition-group`: react library for css animations;
   - `redux-saga`: makes application side effects easier to manage, more efficient to execute, easy to test, and better at handling failures;
-  - `redux-thunk`: complement redux store actions;
 
 - devDependencies:
+
   - `babel`: compiles javascript code to adapt to browsers;
   - `eslint`: lints all javascript code;
   - `css-loader`: compiles css code in project;
@@ -88,32 +98,36 @@ Repository for backend/frontend and services for CharlieChocolat Website (onGoin
   - `webpack-dev-server`: automatically restarts node application when file changes in the directory are detected;
   - `webpack`: bundles production files;
   - `webpack-node-externals`: avoid error when working with Express;
-  
+
   - File Structure:
     ```bash
     .
     ├── src                       # Source files
+    │   ├── __tests__             # Automated test files
+    │       ├──  ...
+    │   ├── animations            # CSS styles used for animations
+    │       ├──  ...
     │   ├── assets                # Image and Video files
-    │       ├──  ...          
+    │       ├──  ...
     │   ├── components            # Components that only use props
-    │       ├──  ...          
+    │       ├──  ...
     │   ├── containers            # Components that manipulate state
-    │       ├──  ...          
+    │       ├──  ...
     │   ├── hoc                   # Higher Order Components
-    │       ├──  ...          
+    │       ├──  ...
+    │   ├── hooks                 # Customized hooks to be shared throughout the app
+    │       ├──  ...
     │   ├── public                # Root HTML
-    │       ├──  ...          
+    │       ├──  ...
     │   ├── shared                # Global functions
-    │       ├──  ...          
-    │   ├── store                 # Redux actions, reducers and sagas 
-    │       ├──  ...          
-    │   ├── tests                 # Automated tests (alternatively `spec` or `tests`)
-    │       ├──  ...          
+    │       ├──  ...
+    │   ├── store                 # Redux actions, reducers and sagas
+    │       ├──  ...
     │   ├── App.js                # Root Component
     │   ├── axios.js              # Global axios config
     │   ├── index.css             # Global css styling
-    │   ├── index.js              # React, Redux (Saga Reducers), Routing, Bootstrap, etc initialization  
-    │   ├── setupTests.js         # Config to use enzyme with jest tests 
+    │   ├── index.js              # React, Redux (Saga Reducers), Routing, Bootstrap, etc initialization
+    │   ├── setupTests.js         # Config to use enzyme with jest tests
     ├── .babelrc                  # Config file for babel
     ├── .eslintrc.json            # Config file for eslint
     ├── jest.config.js            # Config file for jest tests
@@ -121,6 +135,7 @@ Repository for backend/frontend and services for CharlieChocolat Website (onGoin
     ├── webpack.config.js         # Config file for webpack (dev)
     └── webpack.config.prod.js    # Config file for webpack (prod)
     ```
+
 ### Security
 
 - User password is hashed in database;
@@ -168,9 +183,12 @@ This project is licensed under the MIT License.
 
 ## Future Work
 
+- Multi Language Support;
+- Sorting;
+- E2E testing: https://nightwatchjs.org/;
+- Credit card payments;
 - Typescript;
 - Redis;
-- NextJs;
-- FileUpload;
+- NextJS;
 - Clustering;
 - Logging Files;
